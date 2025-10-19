@@ -54,7 +54,7 @@ public sealed class ApplicationFlagClient(
 			userId: userId,
 			attributes: attributes);
 
-		var result = await processor.Evaluate(flag, context);
+		var result = await processor.Evaluate(flag, context).ConfigureAwait(false);
 		return result!.IsEnabled;
 	}
 
@@ -84,7 +84,7 @@ public sealed class ApplicationFlagClient(
 			userId: userId,
 			attributes: attributes);
 
-		return await processor.GetVariation(flag, defaultValue, context);
+		return await processor.GetVariation(flag, defaultValue, context).ConfigureAwait(false);
 	}
 
 	/// <summary>
@@ -113,6 +113,6 @@ public sealed class ApplicationFlagClient(
 			userId: userId,
 			attributes: attributes);
 
-		return await processor.Evaluate(flag, context);
+		return await processor.Evaluate(flag, context).ConfigureAwait(false);
 	}
 }

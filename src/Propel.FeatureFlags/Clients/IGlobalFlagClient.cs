@@ -46,7 +46,7 @@ public sealed class GlobalFlagClient(
 			userId: userId,
 			attributes: attributes);
 
-		var result = await processor.Evaluate(flagKey, context);
+		var result = await processor.Evaluate(flagKey, context).ConfigureAwait(false);
 		return result!.IsEnabled;
 	}
 
@@ -74,6 +74,6 @@ public sealed class GlobalFlagClient(
 			userId: userId,
 			attributes: attributes);
 
-		return await processor.Evaluate(flagKey, context);
+		return await processor.Evaluate(flagKey, context).ConfigureAwait(false);
 	}
 }

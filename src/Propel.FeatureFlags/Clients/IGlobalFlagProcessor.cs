@@ -57,18 +57,18 @@ public sealed class GlobalFlagProcessor(
 		EvaluationOptions? flagConfig = null;
 		if (cache != null)
 		{
-			flagConfig = await cache.GetAsync(globalFlagCacheKey, cancellationToken);
+			flagConfig = await cache.GetAsync(globalFlagCacheKey, cancellationToken).ConfigureAwait(false);
 		}
 
 		// If not in cache, get from repository
 		if (flagConfig == null)
 		{
-			flagConfig = await _repository.GetEvaluationOptionsAsync(flagIdentifier, cancellationToken);
+			flagConfig = await _repository.GetEvaluationOptionsAsync(flagIdentifier, cancellationToken).ConfigureAwait(false);
 
 			// Cache for future requests if found
 			if (flagConfig != null && cache != null)
 			{
-				await cache.SetAsync(globalFlagCacheKey, flagConfig, cancellationToken);
+				await cache.SetAsync(globalFlagCacheKey, flagConfig, cancellationToken).ConfigureAwait(false);
 			}
 		}
 

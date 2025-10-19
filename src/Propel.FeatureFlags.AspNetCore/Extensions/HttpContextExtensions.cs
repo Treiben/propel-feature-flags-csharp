@@ -38,7 +38,7 @@ public static class HttpContextExtensions
 		if (evaluator == null)
 			throw new InvalidOperationException("Feature flag middleware not configured. Add UseFeatureFlags() to your pipeline.");
 
-		return await evaluator.IsEnabledAsync(flag);
+		return await evaluator.IsEnabledAsync(flag).ConfigureAwait(false);
 	}
 
 	/// <summary>
@@ -58,6 +58,6 @@ public static class HttpContextExtensions
 		if (evaluator == null)
 			throw new InvalidOperationException("Feature flag middleware not configured. Add UseFeatureFlags() to your pipeline.");
 
-		return await evaluator.GetVariationAsync(flag, defaultValue);
+		return await evaluator.GetVariationAsync(flag, defaultValue).ConfigureAwait(false);
 	}
 }

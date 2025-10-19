@@ -117,7 +117,7 @@ public class FeatureFlagMiddleware
 		var attributes = ExtractAttributes(context) ?? new Dictionary<string, object>();
 		_logger.LogDebug("Attributes extracted: {@Attributes}", attributes);
 
-		if (await CheckMaintenanceMode(tenantId, userId, attributes))
+		if (await CheckMaintenanceMode(tenantId, userId, attributes).ConfigureAwait(false))
 		{
 			_logger.LogInformation("Maintenance mode is active, returning 503 response");
 			context.Response.StatusCode = 503;
@@ -129,7 +129,7 @@ public class FeatureFlagMiddleware
 				retryAfter = "300"
 			};
 
-			await context.Response.WriteAsync(System.Text.Json.JsonSerializer.Serialize(response));
+			await context.Response.WriteAsync(System.Text.Json.JsonSerializer.Serialize(response)).ConfigureAwait(false);
 			return;
 		}
 
@@ -137,7 +137,7 @@ public class FeatureFlagMiddleware
 		foreach (var flag in _options.GlobalFlags)
 		{
 			_logger.LogDebug("Checking global flag: {FlagKey}", flag.Key);
-			bool isEnabled = await _globalFlags.IsEnabledAsync(flagKey: flag.Key, tenantId: tenantId, userId: userId, attributes: attributes);
+			bool isEnabled = await _globalFlags.IsEnabledAsync(flagKey: flag.Key, tenantId: tenantId, userId: userId, attributes: attributes).ConfigureAwait(false);
 			_logger.LogDebug("Global flag {FlagKey} status: {IsEnabled}", flag.Key, isEnabled);
 
 			if (!isEnabled)
@@ -146,7 +146,7 @@ public class FeatureFlagMiddleware
 					flag.Key, flag.StatusCode);
 				context.Response.StatusCode = flag.StatusCode;
 				context.Response.ContentType = "application/json";
-				await context.Response.WriteAsync(System.Text.Json.JsonSerializer.Serialize(flag.Response));
+				await context.Response.WriteAsync(System.Text.Json.JsonSerializer.Serialize(flag.Response)).ConfigureAwait(false);
 				return;
 			}
 		}
@@ -252,6 +252,6 @@ public class FeatureFlagMiddleware
 		}
 
 		return await _globalFlags.IsEnabledAsync(flagKey: _options.MaintenanceFlagKey,
-			tenantId: tenantId, userId: userId, attributes: attributes);
+			tenantId: tenantId, userId: userId, attributes: attributes).ConfigureAwait(false);
 	}
 }

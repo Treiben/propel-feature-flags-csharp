@@ -26,7 +26,7 @@ internal sealed class AsyncInterceptionHandler(IFeatureFlagEvaluator evaluator)
 	private async Task HandleVoid(IInvocation invocation, FeatureFlaggedAttribute flagAttribute)
 	{
 		var flag = FeatureFlagCache.GetFeatureFlagInstance(flagAttribute.FlagType);
-		if (flag is not null && await evaluator.IsEnabledAsync(flag))
+		if (flag is not null && await evaluator.IsEnabledAsync(flag).ConfigureAwait(false))
 		{
 			// Fixed to call the method directly on the target, not through the proxy because that would cause infinite recursion
 			// Call the actual target method directly, not through the proxy
@@ -38,14 +38,14 @@ internal sealed class AsyncInterceptionHandler(IFeatureFlagEvaluator evaluator)
 		}
 		else
 		{
-			await HandleFallback(invocation, flagAttribute);
+			await HandleFallback(invocation, flagAttribute).ConfigureAwait(false);
 		}
 	}
 
 	private async Task<T> HandleGeneric<T>(IInvocation invocation, FeatureFlaggedAttribute flagAttribute)
 	{
 		var flag = FeatureFlagCache.GetFeatureFlagInstance(flagAttribute.FlagType);
-		if (flag is not null && await evaluator.IsEnabledAsync(flag))
+		if (flag is not null && await evaluator.IsEnabledAsync(flag).ConfigureAwait(false))
 		{
 			// Fixed to call the method directly on the target, not through the proxy because that would cause infinite recursion
 			// Call the actual target method directly, not through the proxy
@@ -59,7 +59,7 @@ internal sealed class AsyncInterceptionHandler(IFeatureFlagEvaluator evaluator)
 		}
 		else if (!string.IsNullOrEmpty(flagAttribute.FallbackMethod))
 		{
-			return await HandleFallbackGeneric<T>(invocation, flagAttribute);
+			return await HandleFallbackGeneric<T>(invocation, flagAttribute).ConfigureAwait(false);
 		}
 
 		return (T)FeatureFlagCache.GetDefaultValue(typeof(T))!;

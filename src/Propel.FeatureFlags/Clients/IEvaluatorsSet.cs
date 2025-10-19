@@ -59,7 +59,7 @@ public sealed class EvaluatorsSet : IEvaluatorsSet
 
 		foreach (var evaluator in evaluators)
 		{
-			result = await evaluator.Evaluate(evaluationOptions, context);
+			result = await evaluator.Evaluate(evaluationOptions, context).ConfigureAwait(false);
 			if (result != null && result.IsEnabled == false)
 			{
 				return result;

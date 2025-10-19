@@ -33,7 +33,7 @@ public class HttpContextFeatureFlagEvaluator(
 			flag: flag, 
 			tenantId: tenantId, 
 			userId: userId,
-			attributes: attributes);
+			attributes: attributes).ConfigureAwait(false);
 	}
 
 	/// <summary>
@@ -51,6 +51,6 @@ public class HttpContextFeatureFlagEvaluator(
 			defaultValue: defaultValue, 
 			tenantId: tenantId, 
 			userId: userId,
-			attributes: attributes); 
+			attributes: attributes).ConfigureAwait(false); 
 	}
 }

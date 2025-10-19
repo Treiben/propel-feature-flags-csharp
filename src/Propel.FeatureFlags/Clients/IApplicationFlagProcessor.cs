@@ -154,18 +154,18 @@ public sealed class ApplicationFlagProcessor(
 		var cacheKey = new ApplicationFlagCacheKey(flagIdentifier.Key, flagIdentifier.ApplicationName, flagIdentifier.ApplicationVersion);
 		if (cache != null)
 		{
-			config = await cache.GetAsync(cacheKey, cancellationToken);
+			config = await cache.GetAsync(cacheKey, cancellationToken).ConfigureAwait(false);
 		}
 
 		// If not in cache, get from repository
 		if (config == null)
 		{
-			config = await _repository.GetEvaluationOptionsAsync(flagIdentifier, cancellationToken);
+			config = await _repository.GetEvaluationOptionsAsync(flagIdentifier, cancellationToken).ConfigureAwait(false);
 
 			// Cache for future requests if found
 			if (config != null && cache != null)
 			{
-				await cache.SetAsync(cacheKey, config, cancellationToken);
+				await cache.SetAsync(cacheKey, config, cancellationToken).ConfigureAwait(false);
 			}
 		}
 
@@ -180,14 +180,14 @@ public sealed class ApplicationFlagProcessor(
 		try
 		{
 			// Save to repository and return the created flag (repository may set additional properties)
-			await _repository.CreateApplicationFlagAsync(flagIdentifier, activationMode, name, description, cancellationToken);
+			await _repository.CreateApplicationFlagAsync(flagIdentifier, activationMode, name, description, cancellationToken).ConfigureAwait(false);
 			// Cache for future requests
 			if (cache != null)
 			{
 				// Create composite key for uniqueness per application
 				var cacheKey = new ApplicationFlagCacheKey(flagIdentifier.Key, flagIdentifier.ApplicationName, flagIdentifier.ApplicationVersion);
 				await cache.SetAsync(cacheKey,
-					new EvaluationOptions(key: applicationFlag.Key, modeSet: new ModeSet([activationMode])), cancellationToken);
+					new EvaluationOptions(key: applicationFlag.Key, modeSet: new ModeSet([activationMode])), cancellationToken).ConfigureAwait(false);
 			}
 		}
 		catch

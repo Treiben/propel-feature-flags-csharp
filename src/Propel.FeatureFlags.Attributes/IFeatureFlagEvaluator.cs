@@ -23,7 +23,7 @@ internal sealed class HttpFeatureFlagEvaluator(IHttpContextAccessor httpContextA
 		if (evaluator == null)
 			return false;
 
-		return await evaluator.IsEnabledAsync(flag);
+		return await evaluator.IsEnabledAsync(flag).ConfigureAwait(false);
 	}
 }
 
@@ -32,6 +32,6 @@ internal sealed class DefaultEvaluator(IApplicationFlagClient featureFlagClient)
 	private readonly IApplicationFlagClient _featureFlagClient = featureFlagClient ?? throw new ArgumentNullException(nameof(featureFlagClient));
 	public async Task<bool> IsEnabledAsync(IFeatureFlag flag)
 	{
-		return await _featureFlagClient.IsEnabledAsync(flag);
+		return await _featureFlagClient.IsEnabledAsync(flag).ConfigureAwait(false);
 	}
 }
