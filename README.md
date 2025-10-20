@@ -9,7 +9,10 @@
 
 A type-safe feature flag library for .NET that separates continuous delivery from release management. Developers define flags in code, product owners control releases through configuration. Supports modern .NET CORE (6+) applications as well as legacy .NET FULL FRAMEWORK (4.7.2+) applications.
 
----
+> **CLI Tool:** [Propel CLI](https://github.com/Treiben/propel-cli) for terminal management and CI/CD
+
+> **Dashboard:** [Propel Dashboard](https://github.com/Treiben/propel-dashboard) for web-based flag management
+
 
 ## Table of Contents
 
@@ -22,11 +25,7 @@ A type-safe feature flag library for .NET that separates continuous delivery fro
 - [Best Practices](#best-practices)
 - [Examples](#examples)
 - [Management Tools](#management-tools)
-- [Contributing](#contributing)
-- [License](#license)
-- [Support](#support)
 
----
 
 ## Overview
 
@@ -35,7 +34,7 @@ A type-safe feature flag library for .NET that separates continuous delivery fro
 Traditional feature flag implementations couple developers to release decisions:
 
 ```csharp
-// Magic strings, no type safety, hard to find during cleanup
+// Magic strings, no type safety, hard to find during cleanup, should we delete this, is this still used, is this a business rule?
 if (config["is_something_enabled"] == "true")
 {
     // New implementation
@@ -438,26 +437,17 @@ Command-line tool for automation and CI/CD pipelines:
 dotnet tool install -g Propel.FeatureFlags.Cli
 ```
 
-[⬆ Back to top](#table-of-contents)
+---
 
 ## Contributing
-
 Contributions are welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
----
-
-## License
-
-Apache-2.0 License - see [LICENSE](./LICENSE) file for details.
-
----
-
 ## Support
-
 **Issues**: [GitHub Issues](https://github.com/Treiben/propel-feature-flags-csharp/issues)
 
----
+## License
+Licensed under the Apache License, Version 2.0.
 
-**Built with ❤️ for .NET developers by Tatyana Asriyan**
+Copyright 2025 Tatyana Asriyan
 
 [⬆ Back to top](#table-of-contents)
