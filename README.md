@@ -219,18 +219,18 @@ public class NotificationService : INotificationService
 
 | Package | Purpose | Documentation |
 |---------|---------|---------------|
-| **[Propel.FeatureFlags](./src/Propel.FeatureFlags/)** | Core library with flag definitions and evaluation logic | [README](./src/Propel.FeatureFlags/readme.md) |
-| **[Propel.FeatureFlags.AspNetCore](./src/Propel.FeatureFlags.AspNetCore/)** | ASP.NET Core middleware and HTTP extensions | [README](./src/Propel.FeatureFlags.AspNetCore/readme.md) |
-| **[Propel.FeatureFlags.Attributes](./src/Propel.FeatureFlags.Attributes/)** | AOP-style method decoration with `[FeatureFlagged]` | [README](./src/Propel.FeatureFlags.Attributes/readme.md) |
-| **[Propel.FeatureFlags.DependencyInjection.Extensions](./infrastructure/Propel.FeatureFlags.DependencyInjection.Extensions/)** | Advanced DI configuration and auto-deployment | [README](./infrastructure/Propel.FeatureFlags.DependencyInjection.Extensions/readme.md) |
+| **[Propel.FeatureFlags](./src/Propel.FeatureFlags/)** | Core library with flag definitions and evaluation logic | [README](./src/Propel.FeatureFlags/README.md) |
+| **[Propel.FeatureFlags.AspNetCore](./src/Propel.FeatureFlags.AspNetCore/)** | ASP.NET Core middleware and HTTP extensions | [README](./src/Propel.FeatureFlags.AspNetCore/README.md) |
+| **[Propel.FeatureFlags.Attributes](./src/Propel.FeatureFlags.Attributes/)** | AOP-style method decoration with `[FeatureFlagged]` | [README](./src/Propel.FeatureFlags.Attributes/README.md) |
+| **[Propel.FeatureFlags.DependencyInjection.Extensions](./infrastructure/Propel.FeatureFlags.DependencyInjection.Extensions/)** | Advanced DI configuration and auto-deployment | [README](./infrastructure/Propel.FeatureFlags.DependencyInjection.Extensions/README.md) |
 
 ### Infrastructure Packages
 
 | Package | Purpose | Documentation |
 |---------|---------|---------------|
-| **[Propel.FeatureFlags.PostgresSql](./infrastructure/Propel.FeatureFlags.PostgreSql/)** | PostgreSQL persistence provider | [README](./infrastructure/Propel.FeatureFlags.PostgreSql/readme.md) |
-| **[Propel.FeatureFlags.SqlServer](./infrastructure/Propel.FeatureFlags.SqlServer/)** | SQL Server persistence provider | [README](./infrastructure/Propel.FeatureFlags.SqlServer/readme.md) |
-| **[Propel.FeatureFlags.Redis](./infrastructure/Propel.FeatureFlags.Redis/)** | Redis distributed caching with two-level cache | [README](./infrastructure/Propel.FeatureFlags.Redis/readme.md) |
+| **[Propel.FeatureFlags.PostgresSql](./infrastructure/Propel.FeatureFlags.PostgreSql/)** | PostgreSQL persistence provider | [README](./infrastructure/Propel.FeatureFlags.PostgreSql/README.md) |
+| **[Propel.FeatureFlags.SqlServer](./infrastructure/Propel.FeatureFlags.SqlServer/)** | SQL Server persistence provider | [README](./infrastructure/Propel.FeatureFlags.SqlServer/README.md) |
+| **[Propel.FeatureFlags.Redis](./infrastructure/Propel.FeatureFlags.Redis/)** | Redis distributed caching with two-level cache | [README](./infrastructure/Propel.FeatureFlags.Redis/README.md) |
 
 ### Key Features by Package
 
