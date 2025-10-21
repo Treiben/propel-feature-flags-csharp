@@ -437,17 +437,14 @@ Command-line tool for automation and CI/CD pipelines:
 dotnet tool install -g Propel.FeatureFlags.Cli
 ```
 
----
+## Support
+**Issues**: [GitHub Issues](https://github.com/Treiben/propel-feature-flags-csharp/issues)
 
 ## Contributing
 Contributions are welcome! See [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines.
 
-## Support
-**Issues**: [GitHub Issues](https://github.com/Treiben/propel-feature-flags-csharp/issues)
-
 ## License
 Licensed under the Apache License, Version 2.0.
-
 Copyright 2025 Tatyana Asriyan
 
 [⬆ Back to top](#table-of-contents)
