@@ -406,7 +406,7 @@ Working with full .NET Framework applications ([documentation](./docs/legacy-dot
 
 ## Management Tools
 
-### 🎯 [Propel Dashboard](https://github.com/Treiben/propel-dashboard)
+### [Propel Dashboard](https://github.com/Treiben/propel-dashboard)
 
 Web-based management interface for product owners and DevOps teams:
 
@@ -423,7 +423,7 @@ docker run -d \
   propel/feature-flags-dashboard:latest
 ```
 
-### 🔧 [Propel CLI](https://github.com/Treiben/propel-cli)
+### [Propel CLI](https://github.com/Treiben/propel-cli)
 
 Command-line tool for automation and CI/CD pipelines:
 
